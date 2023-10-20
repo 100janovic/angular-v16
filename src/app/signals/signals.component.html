@@ -1,0 +1,12 @@
+<div class="p-3 bg-gray-200 my-6 rounded-md">
+    <div class="input-group">
+        <label for="title">Enter title: </label>
+        <input type="text" class="form-input px-4 py-3 rounded-md" [value]="title()" (keyup)="changeTitle($event)">
+    </div>
+    
+    Title: {{ title() }}
+</div>
+
+<div class="p-3 bg-gray-200 my-6 rounded-md">
+    Total users: <strong>{{ totalUsers() }}</strong>
+</div>
