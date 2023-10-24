@@ -1,0 +1,14 @@
+<h1 *ngIf="searchTerm$ | async">
+    Search results for: 
+    <br/>
+    <strong>{{ searchTerm$ | async }}</strong> (from activated route)
+    <br/>
+    <strong>{{ searchTerm }}</strong> (from injected input param)
+</h1>
+
+<br/>
+<br/>
+
+<div>
+    No results
+</div>

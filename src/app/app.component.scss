@@ -1,0 +1,21 @@
+.sidenav {
+    position: fixed;
+    width: 250px;
+    height: auto;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+
+    ul li {
+        margin: .2rem 0;
+    }
+}
+
+.content {
+    position: relative;
+    width: calc(100% - 250px);
+    padding-left: 250px;
+    height: auto;
+}

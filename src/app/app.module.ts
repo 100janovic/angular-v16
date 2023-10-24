@@ -7,6 +7,7 @@ import { SignalsComponent } from './signals/signals.component';
 import { RequiredInputComponent } from './required-input/required-input.component';
 import { HomeComponent } from './home/home.component';
 import { DevExperienceComponent } from './dev-experience/dev-experience.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DevExperienceComponent } from './dev-experience/dev-experience.componen
     SignalsComponent,
     RequiredInputComponent,
     HomeComponent,
-    DevExperienceComponent
+    DevExperienceComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

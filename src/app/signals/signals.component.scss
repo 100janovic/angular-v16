@@ -1,0 +1,19 @@
+#usersTable {
+    min-width: 50%;
+    th, td {
+        padding: .5rem;
+    }
+    tr {
+        cursor: pointer;
+    }
+    tr:hover td {
+        background-color: #eee;
+    }
+}
+
+.page-wrapper {
+    > div {
+        float: left;
+        clear: right;
+    }
+}

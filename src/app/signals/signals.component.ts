@@ -1,40 +1,37 @@
-import { Component, OnInit, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
+import { SignalsService, UserDetailsInterface, UserInterface } from './signals.service';
 
-interface UserInterface {
-  id: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-signals',
   templateUrl: './signals.component.html',
   styleUrls: ['./signals.component.scss']
 })
-export class SignalsComponent implements OnInit {
+export class SignalsComponent {
 
-  title = signal("");
-  users = signal<UserInterface[]>([]);
-  totalUsers = computed(() => {
-    return this.users().length
+  public service = inject(SignalsService);
+  public details: UserDetailsInterface | undefined;
+
+  private users = this.service.users;
+  public totalUsers = computed(() => this.searchResults().length)
+
+  public searchUser = signal("");
+  public searchResults = computed(() => this.searchUser() === "" ?
+    this.users() :
+    this.users().filter(u => u.name.toLowerCase().indexOf(this.searchUser().toLowerCase()) !== -1)
+  );
+
+
+  public setDetails = effect(() => {
+    this.details = this.service.details();
   })
 
-  logUsers = effect(() => {
-    console.log('users modified', this.users());
-  })
-
-  changeTitle(event: Event): void {
-    const title = (event.target as HTMLInputElement).value;
-    this.title.set(title);
+  public onSearchInputChange(event: Event): void {
+    this.searchUser.set((event.target as HTMLInputElement).value);
   }
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.users.set([
-        { id: "1", name: "John"},
-        { id: "2", name: "Jim"}
-      ]);
-      console.log("SET USERS");
-    }, 2000);
+  public selectUser(user: UserInterface): void {
+    this.service.selectUser(user);
   }
 
 }
