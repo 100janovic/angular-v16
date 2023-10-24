@@ -1,5 +1,6 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { SignalsService, UserDetailsInterface, UserInterface } from './signals.service';
+import { SignalsService } from './signals.service';
+import { UserDetailsInterface, UserInterface } from './signals.enums';
 
 
 @Component({
